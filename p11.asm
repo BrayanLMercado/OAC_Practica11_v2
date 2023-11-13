@@ -17,7 +17,6 @@ principal proc
     start:mov sp,0fffh
     mov ax,230h
     call printHex
-    ;call newLine
     call printDec
     call newLine
     jmp start
@@ -90,13 +89,13 @@ endp
      push ax
      push dx
      mov dl,NL
-     mov ah,2h
+     mov ah,2
      int 21h
      pop dx
      pop ax
      ret
      endp
-     
+    
 end principal
    
     
