@@ -34,8 +34,8 @@ printHex proc
  .divide:
      div bx
      push dx ;Enviar el residuo al stack
-     inc cx  ;Incrementar la cantidad de digitos
-     xor dx,dx ;Resetear el residuo
+     inc cx  
+     xor dx,dx
      cmp ax,0 ;El numero ya es 0?
      je .print ;Si
      jmp .divide ;No
@@ -67,8 +67,8 @@ endp
  divide:
      div bx
      push dx ;Enviar el residuo al stack
-     inc cx  ;Incrementar la cantidad de digitos
-     xor dx,dx ;Resetear el residuo
+     inc cx
+     xor dx,dx
      cmp ax,0 ;El numero ya es 0?
      je print ;Si
      jmp divide ;No
