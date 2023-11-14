@@ -68,7 +68,7 @@ endp
  push bx
  push cx
  push dx
- xor cx,cx ;Cantidad De Digitos a Mostrar (Vacio en este punto)
+ xor cx,cx 
  xor dx,dx
  mov bx,10
  divide:
