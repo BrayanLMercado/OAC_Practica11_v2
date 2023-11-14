@@ -1,7 +1,8 @@
 ; Nombre: Brayan Lopez Mercado
-; Matr?cula: 1280838
+; Matricula: 1280838
 ; Fecha: 16/Nov/2023
 ; Materia: Organizacion y Arquitectura De Computadoras
+; Practica 11
 .model tiny
 locals
 .data
@@ -13,11 +14,17 @@ locals
 .code
    org 100h
     
-principal proc
+Main proc
     start:mov sp,0fffh
-    mov ax,230h
+    mov ax,0FFh
     call printHex
+    mov cl,32
+    call putchar
     call printDec
+    mov cl,10
+    call putchar
+    mov cl,13
+    call putchar
     call newLine
     jmp start
     ret
@@ -28,7 +35,7 @@ printHex proc
  push bx
  push cx
  push dx
- mov cx,0 ;Cantidad De Digitos a Mostrar (Vacio en este punto)
+ xor cx,cx
  xor dx,dx
  mov bx,16
  .divide:
@@ -61,7 +68,7 @@ endp
  push bx
  push cx
  push dx
- mov cx,0 ;Cantidad De Digitos a Mostrar (Vacio en este punto)
+ xor cx,cx ;Cantidad De Digitos a Mostrar (Vacio en este punto)
  xor dx,dx
  mov bx,10
  divide:
@@ -85,17 +92,30 @@ endp
      ret
  endp
  
- newLine proc
-     push ax
-     push dx
-     mov dl,NL
-     mov ah,2
-     int 21h
-     pop dx
-     pop ax
-     ret
-     endp
-    
-end principal
+putchar proc
+ push ax
+ push cx
+ push dx
+ mov dl,cl
+ mov ah,2
+ int 21h
+ pop dx
+ pop cx
+ pop ax
+ ret
+ endp
+ 
+newLine proc
+    push ax
+    push dx
+    mov dl,NL
+    mov ah,2
+    int 21h
+    pop ax
+    pop dx
+    ret
+    endp
+
+end Main
    
     
