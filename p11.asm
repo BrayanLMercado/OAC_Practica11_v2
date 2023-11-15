@@ -16,15 +16,11 @@ locals
     
 Main proc
     start:mov sp,0fffh
-    mov ax,0FFh
+    mov ax,0Fh
     call printHex
     mov cl,32
     call putchar
     call printDec
-    mov cl,10
-    call putchar
-    mov cl,13
-    call putchar
     call newLine
     jmp start
     ret
@@ -37,7 +33,7 @@ printHex proc
  push dx
  xor cx,cx
  xor dx,dx
- mov bx,16
+ mov bx,10h
  .divide:
      div bx
      push dx ;Enviar el residuo al stack
@@ -104,17 +100,16 @@ putchar proc
  pop ax
  ret
  endp
- 
+
 newLine proc
-    push ax
-    push dx
-    mov dl,NL
-    mov ah,2
-    int 21h
-    pop ax
-    pop dx
-    ret
-    endp
+ push cx
+ mov cl,10
+ call putchar
+ mov cl,13
+ call putchar
+ pop cx
+ ret
+endp
 
 end Main
    
