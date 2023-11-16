@@ -16,7 +16,7 @@ locals
     
 Main proc
     start:mov sp,0fffh
-    mov ax,0Fh
+    mov ax,101011110001b
     call printHex
     mov cl,32
     call putchar
